@@ -77,6 +77,19 @@ Point operator+(int a, Point b)
 //    rez.SetY(b.GetY() + a);
 //    return rez;
 //}
+
+Point operator--(Point&a) {
+    a.SetX(a.GetX() - 1);
+    a.SetY(a.GetY() - 1);
+    return a;
+}
+
+Point operator--(Point& a,int) {
+    Point temp;
+    a.SetX(a.GetX() - 1);
+    a.SetY(a.GetY() - 1);
+    return temp;
+}
 Point operator++(Point& a)// ++a
 {
     a.SetX(a.GetX() + 10);
@@ -148,6 +161,24 @@ Point operator/=(Point& b, Point& a) {
     return rez;
 }
 
+Point operator-(int a, Point& b) {
+    Point temp(a-b.GetX(), a - b.GetY());
+    return temp;
+}
+
+Point operator*(int a, Point& b) {
+    Point temp(a * b.GetX(), a * b.GetY());
+    return temp;
+}
+Point operator/(int a, Point& b) {
+    Point temp(a / b.GetX(), a / b.GetY());
+    return temp;
+}
+
+int operator+(Point& a, Point& b) {
+    int temp = a.GetX() + b.GetX() + a.GetY() + b.GetY();
+    return temp;
+}
 
 int main()
 {
@@ -161,28 +192,10 @@ int main()
     a *= b;
     a -= b;
     a.Output();
-    //Point c = ++a;
-    //c.Output();// 11 12
-    //a.Output();// 11 12
-
-    //Point c = a++;
-    //c.Output();// 1 2
-    //a.Output();// 11 12
-
-    //Point c = a + b;   // Point c = a.operator+(b);
-    //c.Output();
-    //c = a + 10; //c = a.operator+(10);
-    //c.Output();
-
-    //Point c = 10 + a;
-    //c = a + 10;
-    //c.Output();
-
-
     /// дз
     //// ---------- уровень 1
     //Point q = 100 - a;
-    //q = a * 10;
+    //q = 10*a;
     //q = 100 / a;
     //int res = a + b;//  через функцию!
 
